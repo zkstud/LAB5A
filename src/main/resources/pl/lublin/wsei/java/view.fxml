@@ -15,9 +15,9 @@
       <AnchorPane prefHeight="118.0" prefWidth="800.0" style="-fx-background-color: lightblue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button layoutX="14.0" layoutY="78.0" mnemonicParsing="false" onAction="#btnOpenFileAction" style="-fx-background-color: aliceblue; -fx-background-radius: 55;" text="Otwórz plik" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="78.0" />
-            <Label fx:id="lbFile" alignment="CENTER" layoutX="101.0" layoutY="77.0" prefHeight="27.0" prefWidth="442.0" style="-fx-font-style: italic; -fx-background-color: ghostwhite; -fx-background-radius: 55;" text="Proszę wczytać plik ..." AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="737.0" />
-            <Button layoutX="14.0" layoutY="39.0" mnemonicParsing="false" onAction="#btnSaveFileAction" style="-fx-background-color: aliceblue; -fx-background-radius: 55;" text="Zapisz" />
-            <ImageView fx:id="ivNobel" fitHeight="93.0" fitWidth="122.0" layoutX="1158.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0" />
+            <Label fx:id="lbFile" alignment="CENTER" layoutX="101.0" layoutY="77.0" prefHeight="27.0" prefWidth="620.0" style="-fx-font-style: italic; -fx-background-color: ghostwhite; -fx-background-radius: 55;" text="Proszę wczytać plik ..." AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="559.0" />
+            <Button layoutX="14.0" layoutY="39.0" mnemonicParsing="false" onAction="#btnSaveFileAction" prefHeight="26.0" prefWidth="77.0" style="-fx-background-color: aliceblue; -fx-background-radius: 55;" text="Zapisz" />
+            <ImageView fx:id="ivNobel" fitHeight="89.0" fitWidth="121.0" layoutX="1157.4" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="1.599999999999909" AnchorPane.topAnchor="28.0" />
             <MenuBar layoutY="-1.0" prefHeight="27.0" prefWidth="1280.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
@@ -37,7 +37,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <Button layoutX="101.0" layoutY="39.0" mnemonicParsing="false" onAction="#btnExportFileAction" style="-fx-background-color: aliceblue; -fx-background-radius: 55;" text="Export" />
+            <Button layoutX="101.0" layoutY="39.0" mnemonicParsing="false" onAction="#btnExportFileAction" prefHeight="26.0" prefWidth="77.0" style="-fx-background-color: aliceblue; -fx-background-radius: 55;" text="Eksport" />
          </children>
       </AnchorPane>
       <TableView fx:id="tvNobel" layoutY="118.0" prefHeight="375.0" prefWidth="1280.0" style="-fx-background-color: white; -fx-border-color: lightblue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

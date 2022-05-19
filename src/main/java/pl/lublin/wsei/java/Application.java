@@ -2,8 +2,10 @@ package pl.lublin.wsei.java;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Application extends javafx.application.Application {
@@ -15,6 +17,9 @@ public class Application extends javafx.application.Application {
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
+
+        File fIconsStage = new File("medal_award_icon.png");
+        stage.getIcons().add(new Image(fIconsStage.getAbsolutePath()));
     }
 
     public static void main(String[] args) {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lublin.wsei.java.Controller">
+   <children>
+      <AnchorPane prefHeight="118.0" prefWidth="800.0" style="-fx-background-color: lightblue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnOpenFileAction" style="-fx-background-color: aliceblue; -fx-background-radius: 55;" text="Otwórz plik" textFill="RED" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+            <Label fx:id="lbFile" layoutX="101.0" layoutY="13.0" prefHeight="27.0" prefWidth="676.0" style="-fx-font-style: italic; -fx-background-color: ghostwhite; -fx-background-radius: 55;" text="   Proszę wczytać plik ..." />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

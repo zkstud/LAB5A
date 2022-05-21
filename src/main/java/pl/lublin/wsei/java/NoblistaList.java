@@ -19,7 +19,7 @@ public class NoblistaList {
             contents = "";
         }
 
-        String[] items = contents.split("(\\n\\r|\\r\\n)"); //SPLIT-rozdelitel strok //brak rozlacza
+        String[] items = contents.split("\\r\\n"); //SPLIT-rozdelitel strok //brak rozlacza
         for (int i = 0; i < items.length; i++) {
             noblisci.add(new Noblista(items[i]));
         }

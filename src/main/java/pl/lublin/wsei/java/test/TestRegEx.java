@@ -21,11 +21,11 @@ public class TestRegEx {
                 "435,Rita,Levi-Montalcini,4/22/1909,12/30/2012,Italy,IT,Turin,Italy,IT,Rome,female,1986,medicine,,2,\"\"\"for their discoveries of growth factors\"\"\",Institute of Cell Biology of the C.N.R.,Rome,Italy";
 
         String s;
-        Pattern pat = Pattern.compile("\\n(\\d{3}|\\d{1}|\\d{2})\\,(\\w+\\-\\w+\\s\\w+|\\w+\\-\\w+|\\w+|\\w+\\s\\w+|\\w+\\s\\w+\\s\\w+|\\w+\\s\\w+\\s\\w+\\s\\w+)(\\,|\\.)");
+        Pattern pat = Pattern.compile("[^country]\\,(\\w+\\s\\w+|\\w+|\\w+\\s\\w+\\s\\w+\\s\\w+)\\n");
         Matcher m = pat.matcher(tekst);
         if (m.find()) {
-            s = m.group(2);
-            System.out.println("Znaleziono tytul: " + s);
-        } else System.out.println("Nie znaleziono tytulu ... ");
+            s = m.group(1);
+            System.out.println("Znaleziono : " + s);
+        } else System.out.println("Nie znaleziono nic ... ");
     }
 }

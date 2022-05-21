@@ -1,5 +1,6 @@
 package pl.lublin.wsei.java;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,13 +15,13 @@ public class Noblista {
 
     //TUTAJ KONSTRUKTOR Z REGEX
     public Noblista(String tekst) {
-        Pattern pat = Pattern.compile("\\n\\d{3}\\,(\\w+|\\w+\\s\\w+)(\\.|\\,)");
+        Pattern pat = Pattern.compile("\\n(\\d{3}|\\d{1}|\\d{2})\\,(\\w+\\-\\w+\\s\\w+|\\w+\\-\\w+|\\w+|\\w+\\s\\w+|\\w+\\s\\w+\\s\\w+|\\w+\\s\\w+\\s\\w+\\s\\w+)(\\,|\\.)");
         Matcher m = pat.matcher(tekst);
         if (m.find()) {
-            firstname = m.group(1);
+            firstname = m.group(2);
         } else firstname = "";
 
-        pat = Pattern.compile("\\,(\\w+|\\w+\\s\\w+|\\w+\\-\\w+)\\,\\d");
+        pat = Pattern.compile("\\,(\\w+|\\w+\\s\\w+|\\w+\\s\\w..|\\w+\\-\\w+)(\\,|\\.)\\d");
         m = pat.matcher(tekst);
         if (m.find()) {
             surname = m.group(1);
@@ -44,7 +45,7 @@ public class Noblista {
             motivation = m.group(1);
         } else motivation = "";
 
-        pat = Pattern.compile("[^country]\\,(\\w+\\s\\w+|\\w+)\\n");
+        pat = Pattern.compile("[^country]\\,(\\w+\\s\\w+|\\w+|\\w+\\s\\w+\\s\\w+\\s\\w+)\\n");
         m = pat.matcher(tekst);
         if (m.find()) {
             country = m.group(1);
@@ -52,6 +53,6 @@ public class Noblista {
     }
 
     public void print() {
-        System.out.println(firstname + "\n" + surname + "\n" + year + "\n" + category + "\n" + motivation + "\n" + country + "\n\n");
+        System.out.println(firstname + "\n" + surname + "\n" + year + "\n" + category + "\n" + motivation + "\n" + country);
     }
 }

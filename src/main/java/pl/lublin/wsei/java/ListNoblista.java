@@ -5,10 +5,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class NoblistaList {
+public class ListNoblista {
     public ArrayList<Noblista> noblisci;
 
-    public NoblistaList(String noblFileName){
+    public ListNoblista(String noblFileName){
         noblisci = new ArrayList<>();
         String contents;
         try{
@@ -19,7 +19,7 @@ public class NoblistaList {
             contents = "";
         }
 
-        String[] items = contents.split("\\r\\n"); //SPLIT-rozdelitel strok //brak rozlacza
+        String[] items = contents.split("\\r\\n");
         for (int i = 0; i < items.length; i++) {
             noblisci.add(new Noblista(items[i]));
         }

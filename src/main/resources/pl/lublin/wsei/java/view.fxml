@@ -44,10 +44,10 @@
         <columns>
           <TableColumn fx:id="colFirstname" minWidth="50.0" prefWidth="180.0" text="firstname" />
           <TableColumn fx:id="colSurname" minWidth="50.0" prefWidth="180.0" text="surname" />
-          <TableColumn fx:id="colYear" minWidth="50.0" prefWidth="180.0" text="year" />
-          <TableColumn fx:id="colCategory" minWidth="50.0" prefWidth="180.0" text="category" />
-          <TableColumn fx:id="colMotivation" minWidth="50.0" prefWidth="180.0" text="motivation" />
-          <TableColumn fx:id="colCountry" minWidth="50.0" prefWidth="180.0" text="country" />
+          <TableColumn fx:id="colYear" minWidth="50.0" prefWidth="76.0" text="year" />
+          <TableColumn fx:id="colCategory" minWidth="50.0" prefWidth="132.0" text="category" />
+          <TableColumn fx:id="colMotivation" minWidth="50.0" prefWidth="583.0" text="motivation" />
+          <TableColumn fx:id="colCountry" minWidth="50.0" prefWidth="112.0" text="country" />
         </columns>
       </TableView>
       <AnchorPane layoutY="493.0" prefHeight="228.0" prefWidth="1280.0" style="-fx-background-color: lightblue;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

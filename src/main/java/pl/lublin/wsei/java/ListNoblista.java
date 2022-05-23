@@ -6,10 +6,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class ListNoblista {
-    public ArrayList<Noblista> noblisci;
+    public ArrayList<Noblista> noblisci = new ArrayList<>();
 
     public ListNoblista(String noblFileName){
-        noblisci = new ArrayList<>();
+//        noblisci = new ArrayList<>();
         String contents;
         try{
             contents = new String(Files.readAllBytes(Paths.get(noblFileName)));
@@ -23,5 +23,13 @@ public class ListNoblista {
         for (int i = 0; i < items.length; i++) {
             noblisci.add(new Noblista(items[i]));
         }
+    }
+
+    public ArrayList<Noblista> getNoblisci() {
+        return noblisci;
+    }
+
+    public void setNoblisci(ArrayList<Noblista> noblisci) {
+        this.noblisci = noblisci;
     }
 }

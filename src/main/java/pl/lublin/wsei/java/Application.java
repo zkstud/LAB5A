@@ -15,11 +15,10 @@ public class Application extends javafx.application.Application {
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("Lab5 ZK-37652 'Nobel prize by winner'");
         stage.setScene(scene);
-        stage.show();
-
         stage.setResizable(false);
         File fIconsStage = new File("medal_award_icon.png");
         stage.getIcons().add(new Image(fIconsStage.getAbsolutePath()));
+        stage.show();
     }
 
     public static void main(String[] args) {

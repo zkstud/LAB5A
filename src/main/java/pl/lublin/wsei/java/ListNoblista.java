@@ -8,10 +8,9 @@ import java.util.ArrayList;
 public class ListNoblista {
     public ArrayList<Noblista> noblisci = new ArrayList<>();
 
-    public ListNoblista(String noblFileName){
-//        noblisci = new ArrayList<>();
+    public ListNoblista(String noblFileName) {
         String contents;
-        try{
+        try {
             contents = new String(Files.readAllBytes(Paths.get(noblFileName)));
         } catch (IOException e) {
             System.out.println("Blad wczytywania pliku nobel_prize_by_winner.csv => " + e.getLocalizedMessage());
@@ -27,9 +26,5 @@ public class ListNoblista {
 
     public ArrayList<Noblista> getNoblisci() {
         return noblisci;
-    }
-
-    public void setNoblisci(ArrayList<Noblista> noblisci) {
-        this.noblisci = noblisci;
     }
 }

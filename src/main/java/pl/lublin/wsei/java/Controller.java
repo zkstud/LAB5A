@@ -1,5 +1,7 @@
 package pl.lublin.wsei.java;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +17,14 @@ import javafx.stage.FileChooser;
 import java.io.File;
 
 public class Controller {
+    @FXML
+    public Label lbYear;
+    @FXML
+    public Label lbCategory;
+    @FXML
+    public Label lbCountry;
+    @FXML
+    public Label lbMotivation;
     @FXML
     public Label lbFile;
     @FXML
@@ -50,13 +60,24 @@ public class Controller {
         colCategory.setCellValueFactory(new PropertyValueFactory<ListNoblista, String>("category"));
         colMotivation.setCellValueFactory(new PropertyValueFactory<ListNoblista, String>("motivation"));
         colCountry.setCellValueFactory(new PropertyValueFactory<ListNoblista, String>("country"));
+
+        tvNoblista.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Noblista>() {
+            @Override
+            public void changed(ObservableValue<? extends Noblista> observableValue, Noblista noblista, Noblista t1) {
+                lbYear.setText(String.valueOf(t1.getYear()));
+                lbCategory.setText(t1.getCategory());
+                lbCountry.setText(t1.getCountry());
+                lbMotivation.setText(t1.getMotivation());
+            }
+        });
     }
+
     @FXML
     public void btnOpenFileAction(ActionEvent actionEvent) {
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
             lbFile.setText(file.getAbsolutePath());
-             observableList = FXCollections.observableArrayList(
+            observableList = FXCollections.observableArrayList(
                     new ListNoblista(file.getAbsolutePath()).getNoblisci()
             );
             tvNoblista.setItems(observableList);

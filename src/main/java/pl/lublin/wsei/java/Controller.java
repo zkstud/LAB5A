@@ -93,7 +93,6 @@ public class Controller {
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Lab5 ZK-37652 'Filter noblisci'");
         stage.setScene(scene);
-        stage.setResizable(false);
         File fIconsStage = new File("medal_award_icon.png");
         stage.getIcons().add(new Image(fIconsStage.getAbsolutePath()));
         if(pathToCSVFile != null) {

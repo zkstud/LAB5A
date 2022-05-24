@@ -2,6 +2,8 @@ package pl.lublin.wsei.java;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -9,6 +11,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
+
+import java.util.Locale;
 
 public class FilterController {
     @FXML
@@ -48,18 +52,59 @@ public class FilterController {
             e.printStackTrace();
         }
         tvFilterNoblista.setItems(observableList);
+
+        FilteredList<Noblista> filteredData = new FilteredList<>(observableList, p -> true);
+
+        txtYear.textProperty().addListener((observableValue, oldVal, newVal) -> {
+            filteredData.setPredicate(noblista -> {
+                if (newVal == null || newVal.isEmpty()) {
+                    return true;
+                }
+
+                int caseFilterYear = Integer.parseInt(newVal);
+
+                if (noblista.getDataRow().contains(String.valueOf(caseFilterYear))) {
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        txtCountry.textProperty().addListener((observableValue, oldVal, newVal) -> {
+            filteredData.setPredicate(noblista -> {
+                if (newVal == null || newVal.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilterCountry = newVal.toLowerCase();
+
+                if (noblista.getDataRow().contains(lowerCaseFilterCountry)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        txtCategory.textProperty().addListener((observableValue, oldVal, newVal) -> {
+            filteredData.setPredicate(noblista -> {
+                if (newVal == null || newVal.isEmpty()) {
+                    return true;
+                }
+
+                String caseFilterCategory = newVal.toLowerCase();
+
+                if (noblista.getDataRow().contains(caseFilterCategory)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        SortedList<Noblista> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tvFilterNoblista.comparatorProperty());
+        tvFilterNoblista.setItems(sortedData);
     }
 
     public void btnSaveFileAction(ActionEvent actionEvent) {
-    }
-
-    public void changedTxtYear(InputMethodEvent inputMethodEvent) {
-        
-    }
-
-    public void changedTxtCountry(InputMethodEvent inputMethodEvent) {
-    }
-
-    public void changedTxtCategory(InputMethodEvent inputMethodEvent) {
     }
 }

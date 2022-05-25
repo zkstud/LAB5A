@@ -10,29 +10,28 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.InputMethodEvent;
 
-import java.util.Locale;
 
 public class FilterController {
     @FXML
-    public TableView<Noblista> tvFilterNoblista;
+    public TableView<Noblista> tvNoblista;
     @FXML
-    public TableColumn<ListNoblista, String> colFirstname;
+    public TableColumn<Noblista, String> colFirstname;
     @FXML
-    public TableColumn<ListNoblista, String> colSurname;
+    public TableColumn<Noblista, String> colSurname;
     @FXML
-    public TableColumn<ListNoblista, Integer> colYear;
+    public TableColumn<Noblista, Integer> colYear;
     @FXML
-    public TableColumn<ListNoblista, String> colCategory;
+    public TableColumn<Noblista, String> colCategory;
     @FXML
-    public TableColumn<ListNoblista, String> colMotivation;
+    public TableColumn<Noblista, String> colMotivation;
     @FXML
-    public TableColumn<ListNoblista, String> colCountry;
+    public TableColumn<Noblista, String> colCountry;
     public TextField txtYear;
     public TextField txtCountry;
     public TextField txtCategory;
     private ObservableList<Noblista> observableList;
+    private String dataRowCheck;
 
     @FXML
     public void initialize() {
@@ -51,8 +50,7 @@ public class FilterController {
             System.out.println("Blad wczytywania pliku nobel_prize_by_winner.csv => " + e.getLocalizedMessage());
             e.printStackTrace();
         }
-        tvFilterNoblista.setItems(observableList);
-
+        tvNoblista.setItems(observableList);
         FilteredList<Noblista> filteredData = new FilteredList<>(observableList, p -> true);
 
         txtYear.textProperty().addListener((observableValue, oldVal, newVal) -> {
@@ -62,8 +60,8 @@ public class FilterController {
                 }
 
                 int caseFilterYear = Integer.parseInt(newVal);
-
                 if (noblista.getDataRow().contains(String.valueOf(caseFilterYear))) {
+                    dataRowCheck += String.valueOf(caseFilterYear);
                     return true;
                 }
                 return false;
@@ -76,9 +74,10 @@ public class FilterController {
                     return true;
                 }
 
-                String lowerCaseFilterCountry = newVal.toLowerCase();
+                String caseFilterCountry = newVal;
 
-                if (noblista.getDataRow().contains(lowerCaseFilterCountry)) {
+                if (noblista.getDataRow().contains(caseFilterCountry)) {
+                    dataRowCheck += caseFilterCountry;
                     return true;
                 }
                 return false;
@@ -94,6 +93,7 @@ public class FilterController {
                 String caseFilterCategory = newVal.toLowerCase();
 
                 if (noblista.getDataRow().contains(caseFilterCategory)) {
+                    dataRowCheck += caseFilterCategory;
                     return true;
                 }
                 return false;
@@ -101,9 +101,15 @@ public class FilterController {
         });
 
         SortedList<Noblista> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(tvFilterNoblista.comparatorProperty());
-        tvFilterNoblista.setItems(sortedData);
+        sortedData.comparatorProperty().bind(tvNoblista.comparatorProperty());
+        tvNoblista.setItems(sortedData);
     }
+
+//    public void dataRowTableCheck(Noblista nob) {
+//        if(nob.getDataRow().contains(dataRowCheck)){
+//
+//        }
+//    }
 
     public void btnSaveFileAction(ActionEvent actionEvent) {
     }

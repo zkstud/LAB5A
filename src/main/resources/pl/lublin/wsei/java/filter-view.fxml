@@ -8,23 +8,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lublin.wsei.java.FilterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lublin.wsei.java.FilterController">
    <children>
-      <Button layoutX="262.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnSaveFileAction" prefHeight="26.0" prefWidth="77.0" style="-fx-background-color: aliceblue; -fx-background-radius: 55;" text="Zapisz" AnchorPane.topAnchor="14.0" />
-      <Label layoutX="42.0" layoutY="59.0" text="Rok przyznania nagrody" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="59.0" />
-      <Label layoutX="458.0" layoutY="59.0" text="Dziedzina" AnchorPane.leftAnchor="458.0" AnchorPane.topAnchor="59.0" />
-      <Label layoutX="255.0" layoutY="59.0" text="Kraj pochodzenia" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="59.0" />
-      <TextField fx:id="txtYear" alignment="CENTER" layoutX="42.0" layoutY="76.0" promptText="rok przyznania nagrody" style="-fx-background-color: ghostwhite; -fx-background-radius: 55; -fx-font-style: italic;" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="76.0" />
-      <TextField fx:id="txtCountry" alignment="CENTER" layoutX="226.0" layoutY="76.0" promptText="kraj pochodzenia" style="-fx-background-color: ghostwhite; -fx-background-radius: 55; -fx-font-style: italic;" AnchorPane.topAnchor="76.0" />
-      <TextField fx:id="txtCategory" alignment="CENTER" layoutX="410.0" layoutY="76.0" promptText="dziedzina" style="-fx-background-color: ghostwhite; -fx-background-radius: 55; -fx-font-style: italic;" AnchorPane.leftAnchor="410.0" AnchorPane.topAnchor="76.0" />
-      <TableView fx:id="tvFilterNoblista" layoutY="120.0" prefHeight="280.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: lightblue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
+      <Button layoutX="422.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnSaveFileAction" prefHeight="26.0" prefWidth="77.0" style="-fx-background-color: aliceblue; -fx-background-radius: 55;" text="Zapisz" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="52.0" layoutY="51.0" text="Rok przyznania nagrody" AnchorPane.leftAnchor="52.0" AnchorPane.topAnchor="51.0" />
+      <Label layoutX="435.0" layoutY="49.0" text="Dziedzina" AnchorPane.leftAnchor="435.0" AnchorPane.topAnchor="49.0" />
+      <Label layoutX="744.0" layoutY="49.0" prefHeight="17.0" prefWidth="98.0" text="Kraj pochodzenia" AnchorPane.leftAnchor="744.0" AnchorPane.topAnchor="49.0" />
+      <TextField fx:id="txtYear" alignment="CENTER" layoutX="42.0" layoutY="72.0" promptText="rok przyznania nagrody" style="-fx-background-color: ghostwhite; -fx-background-radius: 55; -fx-font-style: italic;" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="72.0" />
+      <TextField fx:id="txtCountry" alignment="CENTER" layoutX="387.0" layoutY="70.0" promptText="kraj pochodzenia" style="-fx-background-color: ghostwhite; -fx-background-radius: 55; -fx-font-style: italic;" AnchorPane.leftAnchor="387.0" AnchorPane.topAnchor="70.0" />
+      <TextField fx:id="txtCategory" alignment="CENTER" layoutX="719.0" layoutY="70.0" promptText="dziedzina" style="-fx-background-color: ghostwhite; -fx-background-radius: 55; -fx-font-style: italic;" AnchorPane.leftAnchor="719.0" AnchorPane.topAnchor="70.0" />
+      <TableView fx:id="tvNoblista" layoutY="120.0" prefHeight="280.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: lightblue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
         <columns>
-          <TableColumn fx:id="colFirstname" prefWidth="75.0" text="firstname" />
-          <TableColumn fx:id="colSurname" prefWidth="75.0" text="surname" />
-            <TableColumn fx:id="colYear" prefWidth="75.0" text="year" />
-            <TableColumn fx:id="colCategory" prefWidth="75.0" text="category" />
-            <TableColumn fx:id="colMotivation" prefWidth="207.0" text="motivation" />
-            <TableColumn fx:id="colCountry" minWidth="0.0" prefWidth="76.0" text="country" />
+          <TableColumn fx:id="colFirstname" prefWidth="94.0" text="firstname" />
+          <TableColumn fx:id="colSurname" prefWidth="78.0" text="surname" />
+            <TableColumn fx:id="colYear" prefWidth="72.0" text="year" />
+            <TableColumn fx:id="colCategory" prefWidth="86.0" text="category" />
+            <TableColumn fx:id="colMotivation" prefWidth="434.0" text="motivation" />
+            <TableColumn fx:id="colCountry" minWidth="0.0" prefWidth="116.0" text="country" />
         </columns>
       </TableView>
    </children>

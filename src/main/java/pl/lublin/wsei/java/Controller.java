@@ -13,8 +13,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -34,17 +36,17 @@ public class Controller {
     @FXML
     public TableView<Noblista> tvNoblista;
     @FXML
-    public TableColumn<ListNoblista, String> colFirstname;
+    public TableColumn<Noblista, String> colFirstname;
     @FXML
-    public TableColumn<ListNoblista, String> colSurname;
+    public TableColumn<Noblista, String> colSurname;
     @FXML
-    public TableColumn<ListNoblista, Integer> colYear;
+    public TableColumn<Noblista, Integer> colYear;
     @FXML
-    public TableColumn<ListNoblista, String> colCategory;
+    public TableColumn<Noblista, String> colCategory;
     @FXML
-    public TableColumn<ListNoblista, String> colMotivation;
+    public TableColumn<Noblista, String> colMotivation;
     @FXML
-    public TableColumn<ListNoblista, String> colCountry;
+    public TableColumn<Noblista, String> colCountry;
     private final File fPictureNobel = new File("nobel_prize.png");
     private final FileChooser fileChooser = new FileChooser();
     private final FileChooser.ExtensionFilter csvFilter = new FileChooser.ExtensionFilter("Pliki CSV (*.csv)", "*.csv");
@@ -90,12 +92,13 @@ public class Controller {
     public void btnExportFileAction(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("filter-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        stage.setTitle("Lab5 ZK-37652 'Filter noblisci'");
+        Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+        stage.setTitle("Lab5 ZK-37652 'Filtr noblisci'");
         stage.setScene(scene);
         File fIconsStage = new File("medal_award_icon.png");
         stage.getIcons().add(new Image(fIconsStage.getAbsolutePath()));
-        if(pathToCSVFile != null) {
+        if (pathToCSVFile != null) {
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
     }

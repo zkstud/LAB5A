@@ -60,8 +60,24 @@ public class FilterController {
                 }
 
                 int caseFilterYear = Integer.parseInt(newVal);
-                if (noblista.getDataRow().contains(String.valueOf(caseFilterYear))) {
+                if (String.valueOf(noblista.getYear()).contains(String.valueOf(caseFilterYear))) {
                     dataRowCheck += String.valueOf(caseFilterYear);
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        txtCategory.textProperty().addListener((observableValue, oldVal, newVal) -> {
+            filteredData.setPredicate(noblista -> {
+                if (newVal == null || newVal.isEmpty()) {
+                    return true;
+                }
+
+                String caseFilterCategory = newVal;
+
+                if (noblista.getCategory().contains(caseFilterCategory)) {
+                    dataRowCheck += caseFilterCategory;
                     return true;
                 }
                 return false;
@@ -76,24 +92,8 @@ public class FilterController {
 
                 String caseFilterCountry = newVal;
 
-                if (noblista.getDataRow().contains(caseFilterCountry)) {
+                if (noblista.getCountry().contains(caseFilterCountry)) {
                     dataRowCheck += caseFilterCountry;
-                    return true;
-                }
-                return false;
-            });
-        });
-
-        txtCategory.textProperty().addListener((observableValue, oldVal, newVal) -> {
-            filteredData.setPredicate(noblista -> {
-                if (newVal == null || newVal.isEmpty()) {
-                    return true;
-                }
-
-                String caseFilterCategory = newVal.toLowerCase();
-
-                if (noblista.getDataRow().contains(caseFilterCategory)) {
-                    dataRowCheck += caseFilterCategory;
                     return true;
                 }
                 return false;
@@ -104,12 +104,6 @@ public class FilterController {
         sortedData.comparatorProperty().bind(tvNoblista.comparatorProperty());
         tvNoblista.setItems(sortedData);
     }
-
-//    public void dataRowTableCheck(Noblista nob) {
-//        if(nob.getDataRow().contains(dataRowCheck)){
-//
-//        }
-//    }
 
     public void btnSaveFileAction(ActionEvent actionEvent) {
     }

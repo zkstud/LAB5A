@@ -16,7 +16,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -52,19 +51,27 @@ public class Controller {
     private final FileChooser.ExtensionFilter csvFilter = new FileChooser.ExtensionFilter("Pliki CSV (*.csv)", "*.csv");
     private ObservableList<Noblista> observableList;
     private static String pathToCSVFile;
+    private static Stage staticEksportStage = null;
 
     @FXML
     public void initialize() {
         ivNobel.setImage(new Image(fPictureNobel.getAbsolutePath()));
         fileChooser.getExtensionFilters().add(csvFilter);
 
+        initializeTable();
+        initializeLabelInSelectionMode();
+    }
+
+    private void initializeTable() {
         colFirstname.setCellValueFactory(new PropertyValueFactory<>("firstname"));
         colSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
         colYear.setCellValueFactory(new PropertyValueFactory<>("year"));
         colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
         colMotivation.setCellValueFactory(new PropertyValueFactory<>("motivation"));
         colCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
+    }
 
+    private void initializeLabelInSelectionMode() {
         tvNoblista.getSelectionModel().selectedItemProperty().addListener((observableValue, noblista, t1) -> {
             lbYear.setText(String.valueOf(t1.getYear()));
             lbCategory.setText(t1.getCategory());
@@ -89,7 +96,7 @@ public class Controller {
         }
     }
 
-    public void btnExportFileAction(ActionEvent actionEvent) throws IOException {
+    private void createAndOpenEksportStage() throws IOException {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("filter-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
@@ -97,9 +104,16 @@ public class Controller {
         stage.setScene(scene);
         File fIconsStage = new File("medal_award_icon.png");
         stage.getIcons().add(new Image(fIconsStage.getAbsolutePath()));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        staticEksportStage = stage;
+    }
+    public static void closeEksportStage(){
+        staticEksportStage.close();
+    }
+    public void btnExportFileAction(ActionEvent actionEvent) throws IOException {
         if (pathToCSVFile != null) {
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
+            createAndOpenEksportStage();
         }
     }
 

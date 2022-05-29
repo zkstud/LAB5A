@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -21,48 +22,50 @@ import java.io.IOException;
 
 public class Controller {
     @FXML
-    public Label lbYear;
+    private Label lbYear;
     @FXML
-    public Label lbCategory;
+    private Label lbCategory;
     @FXML
-    public Label lbCountry;
+    private Label lbCountry;
     @FXML
-    public Label lbMotivation;
+    private Label lbMotivation;
     @FXML
-    public Label lbFile;
+    private Label lbFile;
     @FXML
-    public ImageView ivNobel;
+    private ImageView ivNobel;
     @FXML
-    public TableView<Noblista> tvNoblista;
+    private TableView<Noblista> tvNoblista;
     @FXML
-    public TableColumn<Noblista, String> colFirstname;
+    private TableColumn<Noblista, String> colFirstname;
     @FXML
-    public TableColumn<Noblista, String> colSurname;
+    private TableColumn<Noblista, String> colSurname;
     @FXML
-    public TableColumn<Noblista, Integer> colYear;
+    private TableColumn<Noblista, Integer> colYear;
     @FXML
-    public TableColumn<Noblista, String> colCategory;
+    private TableColumn<Noblista, String> colCategory;
     @FXML
-    public TableColumn<Noblista, String> colMotivation;
+    private TableColumn<Noblista, String> colMotivation;
     @FXML
-    public TableColumn<Noblista, String> colCountry;
+    private TableColumn<Noblista, String> colCountry;
+    @FXML
+    private Label lbSuccessSave;
     private final File fPictureNobel = new File("nobel_prize.png");
     private final FileChooser fileChooser = new FileChooser();
     private final FileChooser.ExtensionFilter csvFilter = new FileChooser.ExtensionFilter("Pliki CSV (*.csv)", "*.csv");
+
     private ObservableList<Noblista> observableList;
     private static String pathToCSVFile;
-    private static Stage staticEksportStage = null;
+    private static Stage staticEksportStage;
 
     @FXML
     public void initialize() {
         ivNobel.setImage(new Image(fPictureNobel.getAbsolutePath()));
         fileChooser.getExtensionFilters().add(csvFilter);
-
-        initializeTable();
-        initializeLabelInSelectionMode();
+        initColumns();
+        initLabelInSelectionMode();
     }
 
-    private void initializeTable() {
+    private void initColumns() {
         colFirstname.setCellValueFactory(new PropertyValueFactory<>("firstname"));
         colSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
         colYear.setCellValueFactory(new PropertyValueFactory<>("year"));
@@ -71,7 +74,7 @@ public class Controller {
         colCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
     }
 
-    private void initializeLabelInSelectionMode() {
+    private void initLabelInSelectionMode() {
         tvNoblista.getSelectionModel().selectedItemProperty().addListener((observableValue, noblista, t1) -> {
             lbYear.setText(String.valueOf(t1.getYear()));
             lbCategory.setText(t1.getCategory());
@@ -108,9 +111,11 @@ public class Controller {
         stage.show();
         staticEksportStage = stage;
     }
-    public static void closeEksportStage(){
+
+    public static void closeEksportStage() {
         staticEksportStage.close();
     }
+
     public void btnExportFileAction(ActionEvent actionEvent) throws IOException {
         if (pathToCSVFile != null) {
             createAndOpenEksportStage();

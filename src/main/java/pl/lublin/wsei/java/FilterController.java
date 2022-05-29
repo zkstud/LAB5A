@@ -1,19 +1,16 @@
 package pl.lublin.wsei.java;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -41,10 +38,11 @@ public class FilterController {
     private ObservableList<Noblista> observableList;
     private FilteredList<Noblista> filteredData;
     private SortedList<Noblista> sortedData;
+    private Alert alertSucSave;
 
     @FXML
     public void initialize() {
-        colInitialize();
+        initColumns();
         try {
             observableList = FXCollections.observableArrayList(
                     new ListNoblista(Controller.getPathToCSVFile()).getNoblisci()
@@ -65,7 +63,7 @@ public class FilterController {
         tvNoblista.setItems(sortedData);
     }
 
-    private void colInitialize() {
+    private void initColumns() {
         colFirstname.setCellValueFactory(new PropertyValueFactory<>("firstname"));
         colSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
         colYear.setCellValueFactory(new PropertyValueFactory<>("year"));
@@ -140,6 +138,7 @@ public class FilterController {
                 out.newLine();
             }
             Controller.closeEksportStage();
+            alertSucSave();
         } catch (IOException e) {
             System.out.println("IOException " + e.getMessage());
             e.printStackTrace();
@@ -148,5 +147,13 @@ public class FilterController {
                 out.close();
             }
         }
+    }
+    private void alertSucSave(){
+        alertSucSave = new Alert(Alert.AlertType.INFORMATION);
+        alertSucSave.setTitle("Information Dialog");
+        alertSucSave.setHeaderText(null);
+        alertSucSave.setContentText("Filtr został pomyślnie zapisany do pliku \"noblista_filtr.csv\""
+                + "\nznajdujący się : " + Controller.getPathToCSVFile());
+        alertSucSave.show();
     }
 }

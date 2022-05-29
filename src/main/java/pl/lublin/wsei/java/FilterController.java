@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -149,11 +150,14 @@ public class FilterController {
         }
     }
     private void alertSucSave(){
+        File file = new File("noblista_filtr");
+        if(file != null){
         alertSucSave = new Alert(Alert.AlertType.INFORMATION);
         alertSucSave.setTitle("Information Dialog");
         alertSucSave.setHeaderText(null);
         alertSucSave.setContentText("Filtr został pomyślnie zapisany do pliku \"noblista_filtr.csv\""
-                + "\nznajdujący się : " + Controller.getPathToCSVFile());
+                + "\nznajdujący się : " + file.getAbsolutePath());
         alertSucSave.show();
+        }
     }
 }
